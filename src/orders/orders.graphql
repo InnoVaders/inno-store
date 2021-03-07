@@ -1,0 +1,21 @@
+type Query {
+  orders: [Order]
+  order(id: ID!): Order
+}
+
+type Mutation {
+  createOrder(createOrderInput: CreateOrderInput): Order
+}
+
+type Subscription {
+  orderCreated: Order
+}
+
+type Order {
+  id: String
+  name: String
+}
+
+input CreateOrderInput {
+  name: String
+}
