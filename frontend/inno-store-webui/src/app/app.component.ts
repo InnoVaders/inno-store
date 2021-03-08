@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {of} from 'rxjs';
+import {of, Observable} from 'rxjs';
+import {Order} from '../__generated__/graphql.types';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import {of} from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  public readonly orders$ = of([]);
+  public readonly orders$:Observable<Order[]> = of([]);
   // public readonly orders$ = this.allOrdersGQL.fetch().pipe(
   //   map(res => res.data.orders),
   // )
