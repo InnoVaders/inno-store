@@ -1,4 +1,4 @@
-name: Backend API
+name: Inno Store Backend API
 
 on:
   push:
