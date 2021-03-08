@@ -1,17 +1,22 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - inno-store-api
+name: Backend API
 
 on:
   push:
     branches:
       - main
+    paths:
+      - 'backend/api/**'
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend/api
 
     steps:
       - uses: actions/checkout@master
