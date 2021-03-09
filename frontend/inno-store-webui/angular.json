@@ -63,7 +63,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "inno-store-webui:build"
+            "browserTarget": "inno-store-webui:build",
+            "proxyConfig": "src/proxy.conf.js"
           },
           "configurations": {
             "production": {
