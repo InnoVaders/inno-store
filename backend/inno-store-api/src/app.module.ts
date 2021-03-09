@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { GraphQLModule } from '@nestjs/graphql';
-import { OrdersModule } from './orders/orders.module';
 import { ConfigModule } from '@nestjs/config';
+import { AppController } from './app.controller';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
