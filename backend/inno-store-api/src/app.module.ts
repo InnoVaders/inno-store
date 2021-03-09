@@ -1,18 +1,19 @@
-import {Module} from '@nestjs/common';
-import {AppController} from './app.controller';
-import {AppService} from './app.service';
-import {GraphQLModule} from '@nestjs/graphql';
-import {OrdersModule} from './orders/orders.module';
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { GraphQLModule } from '@nestjs/graphql';
+import { OrdersModule } from './orders/orders.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    OrdersModule,
     GraphQLModule.forRoot({
       typePaths: ['./**/*.graphql'],
       installSubscriptionHandlers: true,
     }),
-    OrdersModule,
+    ConfigModule.forRoot(),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [],
 })
 export class AppModule {}
