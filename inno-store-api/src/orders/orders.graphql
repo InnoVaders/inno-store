@@ -4,7 +4,7 @@ type Query {
 }
 
 type Mutation {
-  createOrder(createOrderInput: CreateOrderInput): Order
+  createOrder(order: CreateOrderInput): Order
 }
 
 type Subscription {

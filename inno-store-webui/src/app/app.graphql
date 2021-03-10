@@ -1,6 +1,0 @@
-query GetAllOrders {
-  orders {
-    id,
-    name
-  }
-}

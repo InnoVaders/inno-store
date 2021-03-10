@@ -17,7 +17,7 @@ export abstract class IQuery {
 }
 
 export abstract class IMutation {
-    abstract createOrder(createOrderInput?: CreateOrderInput): Order | Promise<Order>;
+    abstract createOrder(order?: CreateOrderInput): Order | Promise<Order>;
 }
 
 export abstract class ISubscription {

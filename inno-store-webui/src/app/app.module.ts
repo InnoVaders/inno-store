@@ -7,10 +7,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './pages/home/home.component';
 import { AppConfigService } from './app-config.service';
 
-export function appInit(appConfigService: AppConfigService) {
-  return () => appConfigService.load();
-}
-
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [

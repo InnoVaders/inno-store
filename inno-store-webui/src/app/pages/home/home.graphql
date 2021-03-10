@@ -1,0 +1,13 @@
+query GetAllOrders {
+  orders {
+    id
+    name
+  }
+}
+
+subscription onOrderCreated {
+  orderCreated {
+    id
+    name
+  }
+}
