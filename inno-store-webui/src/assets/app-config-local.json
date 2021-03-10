@@ -1,4 +1,4 @@
 {
   "api": "http://localhost:3000/graphql",
-  "apiWs": "ws://localhost:5000"
+  "apiWs": "ws://localhost:3000/graphql"
 }
