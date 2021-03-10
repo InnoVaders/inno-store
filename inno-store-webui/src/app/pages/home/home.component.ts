@@ -34,11 +34,12 @@ export class HomeComponent implements OnInit {
   }
 
   async createOrder(): Promise<void> {
+    const id = new Date().getTime();
     await this.createOrderGQL
       .mutate({
         order: {
-          name: `Order ${new Date().getTime()}`,
-          id: `${new Date().getTime()}`,
+          name: `Order ${id}`,
+          id: `${id}`,
         },
       })
       .toPromise();
