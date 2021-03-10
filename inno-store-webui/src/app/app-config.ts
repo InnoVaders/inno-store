@@ -14,15 +14,10 @@ export function getAppConfigFromProcessEnv(): AppConfig {
   // @ts-ignore
   const apiWs = process?.env?.API_WS_URL as string;
   if (api || apiWs) {
-    const appConfig: AppConfig = {
+    return {
       api,
       apiWs,
     };
-    // tslint:disable-next-line:no-console
-    console.info(
-      ' got appconfig from env variables: ' + JSON.stringify(appConfig),
-    );
-    return appConfig;
   } else {
     return (localDevAppConfig as any).default;
   }
