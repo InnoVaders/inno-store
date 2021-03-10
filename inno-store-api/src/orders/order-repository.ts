@@ -5,12 +5,10 @@ import { FeedResponse } from '@azure/cosmos';
 
 @Injectable()
 export class OrderRepository {
-  private orders: Order[] = [];
-
-  constructor(private cosmosService: CosmosService) {}
+  constructor(private cosmos: CosmosService) {}
 
   async findAll(): Promise<Order[]> {
-    const container = await this.cosmosService.container('orders');
+    const container = await this.cosmos.container('orders');
     const response: FeedResponse<Order> = await container.items
       .query({
         query: 'SELECT * from c',
@@ -20,7 +18,7 @@ export class OrderRepository {
   }
 
   async createOrder(order: Order): Promise<Order> {
-    const container = await this.cosmosService.container('orders');
+    const container = await this.cosmos.container('orders');
     const response = await container.items.create<Order>(order);
     return order;
   }
