@@ -6,8 +6,4 @@ export class AppController {
   health(): string {
     return 'API is up and running...';
   }
-
-  health2(): string {
-    return 'API is up and running...';
-  }
 }
