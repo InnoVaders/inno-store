@@ -13,7 +13,9 @@ import { AppConfigModule } from './app-config/app-config.module';
       typePaths: ['./**/*.graphql'],
       installSubscriptionHandlers: true,
     }),
-    ConfigModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: ['.env.dev.local', '.env.dev'],
+    }),
   ],
   controllers: [AppController],
   providers: [],

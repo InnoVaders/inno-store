@@ -4,3 +4,4 @@
 /inno-store-api/node_modules/
 /inno-store-webui/dist/
 /inno-store-webui/node_modules/
+/inno-store-api/.env.dev.local
