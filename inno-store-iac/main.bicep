@@ -8,8 +8,8 @@ module appServicePlanModule './app-service-plan.bicep' = {
   }
 }
 
-module appWebUi './app-webui.bicep' = {
-  name: 'appWebUi'
+module appServiceWebui './app-service-webui.bicep' = {
+  name: 'appServiceWebui'
   params: {
     name: 'inno-store-webui-2'
     location: location
