@@ -35,7 +35,7 @@ jobs:
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP }}
-          template: ./main.json
+          template: inno-store-iac/main.json
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
