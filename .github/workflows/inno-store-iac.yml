@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
+  build-and-deploy:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -19,7 +19,7 @@ jobs:
     steps:
       # GIT Checkout
       - uses: actions/checkout@main
-      # Runs the bicep CLI action - individual files
+      # Compile Bicep to ARM
       - name: Run Bicep build
         uses: aliencube/bicep-build-actions@v0.1
         with:
@@ -29,12 +29,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-        # Deploy ARM template
+      # Deploy ARM template
       - name: Run ARM deploy
         uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: U118053-sb-rg-iac
+          resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP }}
           template: ./main.json
 
         # output containerName variable from template
