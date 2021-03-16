@@ -1,0 +1,33 @@
+name: Inno Store Backend API
+
+on:
+  push:
+    branches:
+      - iac
+    paths:
+      - 'inno-store-iac/**'
+      - '.github/workflows/inno-store-iac.yml'
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: inno-store-iac
+
+    steps:
+      - uses: actions/checkout@master
+      # Runs the bicep CLI action - individual files
+      - name: Run Bicep build
+        uses: aliencube/bicep-build-actions@v0.1
+        with:
+          files: main.bicep
+
+      # Checks the result
+      - name: Check the result
+        shell: bash
+        run: |
+          shopt -s globstar
+          ls -altR **/main*.*
+
