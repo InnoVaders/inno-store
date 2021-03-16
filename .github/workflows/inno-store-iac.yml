@@ -17,17 +17,26 @@ jobs:
         working-directory: inno-store-iac
 
     steps:
-      - uses: actions/checkout@master
+      # GIT Checkout
+      - uses: actions/checkout@main
       # Runs the bicep CLI action - individual files
       - name: Run Bicep build
         uses: aliencube/bicep-build-actions@v0.1
         with:
-          files: main.bicep
+          files: inno-store-iac/main.bicep
+      # Log into Azure
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Checks the result
-      - name: Check the result
-        shell: bash
-        run: |
-          shopt -s globstar
-          ls -altR **/main*.*
+        # Deploy ARM template
+      - name: Run ARM deploy
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+          resourceGroupName: U118053-sb-rg-iac
+          template: ./main.json
+
+        # output containerName variable from template
+      - run: echo ${{ steps.deploy.outputs.containerName }}
 

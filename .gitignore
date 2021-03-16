@@ -5,3 +5,4 @@
 /inno-store-webui/dist/
 /inno-store-webui/node_modules/
 /inno-store-api/.env.dev.local
+/inno-store-iac/main.json
