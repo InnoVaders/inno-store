@@ -30,6 +30,7 @@ resource app 'Microsoft.Web/sites@2020-10-01' = {
     siteConfig: {
       alwaysOn: true
       scmType: 'None'
+      linuxFxVersion: 'NODE|12-lts'
       appSettings: [
         {
           name: 'COSMOSDB_ENDPOINT'

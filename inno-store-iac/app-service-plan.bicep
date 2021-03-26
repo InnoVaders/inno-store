@@ -12,5 +12,8 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2018-02-01' = {
     family: 'S'
     capacity: 1
   }
+  properties: {
+    reserved: true
+  }
 }
 output appServicePlanID string = appServicePlan.id

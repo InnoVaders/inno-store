@@ -1,5 +1,5 @@
 param location string = 'switzerlandnorth'
-param name string = 'inno-store-01'
+param name string = 'inno-store-02'
 
 module appServicePlanModule './app-service-plan.bicep' = {
   name: 'appServicePlan'
