@@ -3,6 +3,26 @@ param name string
 param appServicePlanID string
 param repoUrl string
 
+
+resource cosmos 'Microsoft.DocumentDB/databaseAccounts@2020-04-01' = {
+  name: '${name}-db'
+  location: location
+  kind: 'GlobalDocumentDB'
+  properties: {
+    consistencyPolicy: {
+      defaultConsistencyLevel: 'Session'
+    }
+    locations: [
+      {
+        locationName: location
+        failoverPriority: 0
+        isZoneRedundant: false
+      }
+    ]
+    databaseAccountOfferType: 'Standard'
+  }
+}
+
 resource app 'Microsoft.Web/sites@2020-10-01' = {
   name: name
   location: location
@@ -12,6 +32,16 @@ resource app 'Microsoft.Web/sites@2020-10-01' = {
     siteConfig: {
       alwaysOn: true
       scmType: 'ExternalGit'
+      appSettings: [
+        {
+          name: 'COSMOSDB_ENDPOINT'
+          value: cosmos.properties.documentEndpoint
+        }
+        {
+          name: 'COSMOSDB_KEY'
+          value: listKeys(cosmos.id, cosmos.apiVersion).primaryMasterKey
+        }
+      ]
     }
   }
 }
