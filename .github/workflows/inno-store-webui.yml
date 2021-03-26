@@ -17,7 +17,7 @@ jobs:
         working-directory: inno-store-webui
 
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
 
     - name: Set up Node.js version
       uses: actions/setup-node@v1
@@ -34,5 +34,5 @@ jobs:
       with:
         app-name: 'inno-store-webui'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_5567a2817e864fa49c60db8702ea63ed }}
+        publish-profile: ${{ secrets.AZURE_PUBLISHPROFILE_APP_WEBUI }}
         package: 'inno-store-webui'

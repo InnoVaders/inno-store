@@ -1,0 +1,47 @@
+name: Inno Store IaC
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'inno-store-iac/**'
+      - '.github/workflows/inno-store-iac.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: inno-store-iac
+
+    steps:
+      # GIT Checkout
+      - uses: actions/checkout@main
+      # Compile Bicep to ARM
+      - name: Run Bicep build
+        uses: aliencube/bicep-build-actions@v0.1
+        with:
+          files: inno-store-iac/main.bicep
+      # Log into Azure
+      - uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      # list directory
+      - run: ls
+
+      # Deploy ARM template
+      - name: Run ARM deploy
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+          resourceGroupName: ${{ secrets.AZURE_RESOURCEGROUP }}
+          template: inno-store-iac/main.json
+          parameters:
+            name=${{ secrets.PROJECT_NAME }}
+
+        # output containerName variable from template
+      - run: echo ${{ steps.deploy.outputs.containerName }}
+
