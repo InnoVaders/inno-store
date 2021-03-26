@@ -27,7 +27,8 @@ jobs:
       - name: npm install, build, and test
         run: |
           npm install
-          npm run build --if-present
+          npm run build
+          npm run ci:bundle-azure-deployment
 
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
@@ -35,4 +36,4 @@ jobs:
           app-name: 'inno-store-02-app-webui'
           slot-name: 'production'
           publish-profile: ${{ secrets.AZURE_PUBLISHPROFILE_APP_WEBUI }}
-          package: 'inno-store-webui'
+          package: 'inno-store-webui/dist/dist.zip'
