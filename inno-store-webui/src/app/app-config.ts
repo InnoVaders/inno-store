@@ -1,8 +1,9 @@
 import * as localDevAppConfig from '../assets/app-config-local.json';
 
 export interface AppConfig {
-  /** */
+  /** Graphql Endpoint */
   api: string;
+  /** Graphql Subscription Endpoint (Websockets) */
   apiWs: string;
 }
 
