@@ -3,28 +3,30 @@ param name string
 param appServicePlanID string
 param repoUrl string
 
-resource app 'Microsoft.Web/sites@2020-06-01' = {
+resource app 'Microsoft.Web/sites@2020-10-01' = {
   name: name
   location: location
   kind: 'app,linux'
   properties: {
     serverFarmId: appServicePlanID
+    siteConfig: {
+      alwaysOn: true
+      scmType: 'ExternalGit'
+    }
   }
 }
 
-resource appConfig 'Microsoft.Web/sites/config@2020-09-01' = {
-  name: '${app.name}/config'
-  properties: {
-    scmType:  'GitHubAction'
-  }
-}
-
-resource appSource 'Microsoft.Web/sites/sourcecontrols@2020-06-01' = {
-  name: '${app.name}/source'
-  properties: {
-    isGitHubAction: true
-    repoUrl: repoUrl
-    branch: 'main'
-    isManualIntegration: true
-  }
+resource appSource 'Microsoft.Web/sites/sourcecontrols@2020-10-01' = {
+   name: '${app.name}/source'
+   properties: {
+     isGitHubAction: false
+     repoUrl: repoUrl
+     branch: 'main'
+     isManualIntegration: true
+     deploymentRollbackEnabled: true
+     isMercurial: false
+   }
+   dependsOn: [
+     app
+   ]
 }
