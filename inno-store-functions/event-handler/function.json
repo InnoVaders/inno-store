@@ -5,7 +5,7 @@
       "name": "documents",
       "direction": "in",
       "leaseCollectionName": "leases",
-      "connectionStringSetting": "",
+      "connectionStringSetting": "COSMOSDB_CONNECTION",
       "databaseName": "inno-store",
       "collectionName": "orders",
       "createLeaseCollectionIfNotExists": true
@@ -13,7 +13,7 @@
     {
       "name": "outputSbQueue",
       "type": "serviceBus",
-      "queueName": "%SERVICE_BUS_QUEUE%",
+      "queueName": "orders",
       "connection": "SERVICE_BUS_CONNECTION",
       "direction": "out"
     }
