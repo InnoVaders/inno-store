@@ -10,6 +10,7 @@ resource app 'Microsoft.Web/sites@2020-10-01' = {
   kind: 'app,linux'
   properties: {
     serverFarmId: appServicePlanID
+    httpsOnly: true
     siteConfig: {
       alwaysOn: true
       scmType: 'None'
