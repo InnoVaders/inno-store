@@ -31,4 +31,4 @@ Issues
 
 - when deployment fails - no rollback is happening
 - git config not working
-- set up credentials
+- Azure/functions-action@v1 not yet working with Service Principal -> Publish Profile is anoying
