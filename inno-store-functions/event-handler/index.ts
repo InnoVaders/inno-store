@@ -1,18 +1,12 @@
-import { AzureFunction, Context, HttpRequest } from '@azure/functions';
+import { AzureFunction, Context } from '@azure/functions';
 
-const httpTrigger: AzureFunction = async function (
+const cosmosDBTrigger: AzureFunction = async function (
   context: Context,
-  req: HttpRequest,
+  documents: any[],
 ): Promise<void> {
-  context.log('HTTP trigger function processed a request.');
-  const name = req.query.name || (req.body && req.body.name);
-  const responseMessage = name
-    ? 'Hello, ' + name + '. This HTTP triggered function executed successfully.'
-    : 'This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response.';
-
-  context.res = {
-    body: responseMessage,
-  };
+  if (!!documents && documents.length > 0) {
+    context.log('Document Id: ', documents[0].id);
+  }
 };
 
-export default httpTrigger;
+export default cosmosDBTrigger;

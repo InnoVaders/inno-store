@@ -5,6 +5,7 @@
     "postinstall": "run-p install:api install:webui",
     "install:api": "cd inno-store-api && npm i",
     "install:webui": "cd inno-store-webui && npm i",
+    "install:functions": "cd inno-store-functions && npm i",
     "start:api": "cd inno-store-api && npm run start:dev",
     "start:webui:client": "cd inno-store-webui && npm run serve:client",
     "start:webui:ssr": "cd inno-store-webui && npm run dev:ssr",

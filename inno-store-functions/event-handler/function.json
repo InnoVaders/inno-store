@@ -1,20 +1,14 @@
 {
   "bindings": [
     {
-      "authLevel": "function",
-      "type": "httpTrigger",
+      "type": "cosmosDBTrigger",
+      "name": "documents",
       "direction": "in",
-      "name": "req",
-      "methods": [
-        "get",
-        "post"
-      ]
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "",
+      "databaseName": "inno-store",
+      "collectionName": "orders",
+      "createLeaseCollectionIfNotExists": true
     }
-  ],
-  "scriptFile": "../dist/event-handler/index.js"
+  ]
 }
