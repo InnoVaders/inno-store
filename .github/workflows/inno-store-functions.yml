@@ -36,8 +36,7 @@ jobs:
           npm run build
 
       - name: 'Deploy to Azure Web App'
-        uses: azure/webapps-deploy@v2
+        uses: Azure/functions-action@v1
         with:
           app-name: 'inno-store-02-app-functions'
-          slot-name: 'production'
           package: 'inno-store-functions'
