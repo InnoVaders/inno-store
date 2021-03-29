@@ -33,6 +33,7 @@ module appFunctions './app-service-functions.bicep' = {
   name: 'appServiceFunctions'
   params: {
     name: '${name}-app-functions'
+    storageName: 'innostorefuncstorage'
     location: location
     appServicePlanID: appServicePlan.outputs.appServicePlanID
   }
