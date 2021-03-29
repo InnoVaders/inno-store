@@ -16,5 +16,5 @@
       "name": "res"
     }
   ],
-  "scriptFile": "../dist/EventHandler/index.js"
+  "scriptFile": "../dist/event-handler/index.js"
 }
