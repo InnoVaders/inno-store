@@ -12,7 +12,7 @@ module appServicePlan './app-service-plan.bicep' = {
 module appApi './app-service-api.bicep' = {
   name: 'appServiceApi'
   params: {
-    name: '${name}-app-api'
+    name: '${name}-api'
     location: location
     appServicePlanID: appServicePlan.outputs.appServicePlanID
   }
@@ -21,7 +21,7 @@ module appApi './app-service-api.bicep' = {
 module appWebUi './app-service-webui.bicep' = {
   name: 'appServiceWebui'
   params: {
-    name: '${name}-app-webui'
+    name: '${name}-webui'
     location: location
     appServicePlanID: appServicePlan.outputs.appServicePlanID
     apiUrl: appApi.outputs.apiUrl
@@ -33,7 +33,7 @@ module appFunctions './app-service-functions.bicep' = {
   name: 'appServiceFunctions'
   params: {
     name: '${name}-app-functions'
-    storageName: 'innostorefuncstorage'
+    storageName: '${name}storage'
     location: location
     appServicePlanID: appServicePlan.outputs.appServicePlanID
   }
