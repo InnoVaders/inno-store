@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - functions
     paths:
       - 'inno-store-iac/**'
       - '.github/workflows/inno-store-iac.yml'

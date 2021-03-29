@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - functions
     paths:
       - 'inno-store-api/**'
       - '.github/workflows/inno-store-api.yml'
