@@ -37,8 +37,17 @@ jobs:
           npm run ci:bundle-azure-deployment
 
       - name: 'Deploy to Azure Web App'
+        id: 'deployToAzure'
         uses: azure/webapps-deploy@v2
         with:
           app-name: 'inno-store-02-app-webui'
           slot-name: 'production'
           package: 'inno-store-webui/dist/dist.zip'
+
+      - name: 'Notify Slack'
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+          SLACK_FOOTER: ${{ steps.deployToAzure.outputs.webapp-url }}
+          SLACK_USERNAME: 'InnoVaderBot'
+
